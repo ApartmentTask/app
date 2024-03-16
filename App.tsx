@@ -23,7 +23,7 @@ function App(): React.JSX.Element {
 
   const getApartment = async () => {
     try {
-      const response = await fetch('http://192.168.112.138:3000/api/apartments');
+      const response = await fetch('http://192.168.112.138:3000/api/apartments'); // ip address from ipconfig the computer and phone should share the same wifi
       const json = await response.json();
       setApartmentData(json);
     } catch (error) {
@@ -40,8 +40,8 @@ function App(): React.JSX.Element {
     const Item = ({apartment} : {apartment: any}) => (
       <TouchableOpacity onPress={
         ()=>{
-          const head=apartment.name //name
-          const body="price: $"+apartment.price+"\n\nDescription: "+apartment.description  //price and description
+          const head=apartment.name 
+          const body="price: $"+apartment.price+"\n\nDescription: "+apartment.description  
           Alert.alert(head,body)}
         }>
      <View style={styles.viewStyle}>
@@ -58,7 +58,7 @@ function App(): React.JSX.Element {
       <FlatList
         data={apartmentData}
         renderItem={({item}: {item: any}) => <Item apartment={item} />}
-        keyExtractor={item => item._id} //._id
+        keyExtractor={item => item._id} 
       />
 
     </SafeAreaView>
